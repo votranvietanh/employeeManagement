@@ -1,0 +1,51 @@
+
+.align-right{
+    margin-left:auto;
+    display: flex;
+}
+.employee-search{
+    padding: 8px 0;
+    display: flex;
+}
+.employee-search .search{
+  margin-left:20%;
+}
+.employee-option{
+    display:flex;
+    border-bottom: 1px solid rgb(187, 187, 187);
+    border-radius: 5px;
+    padding: 0px 8px;
+}
+.employee-option p{
+    font-size: 18px;
+    font-weight: bold;
+}
+.icon-group {
+  padding: 0 8px;
+  margin: auto;
+}
+
+.datagrid-header{
+  color:black;
+  font-family: 'Segoe UI', Impact, Geneva, Verdana, sans-serif;
+  font-size:16px;
+  font-weight: bold
+}
+
+.datagrid-icon:hover + .icon-text{
+    border-radius: 5px;
+    width: fit-content;
+    height: 24px;
+    background-color: rgb(247, 247, 137);
+    font-size: 13px;
+    position: absolute;
+    display: block;
+    color: black;
+    margin-top:32px;
+    margin-right: 30px;
+    
+}
+
+.icon-text{
+    display: none;
+}

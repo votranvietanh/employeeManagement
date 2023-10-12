@@ -1,0 +1,93 @@
+.employee-option{
+    display:flex;
+    border-bottom: 1px solid rgb(187, 187, 187);
+    border-radius: 5px;
+    padding: 0px 8px;
+}
+.employee-option p{
+    font-size: 18px;
+    font-weight: bold;
+}
+.image{
+    width: 100%;
+    height:300px;
+}
+
+.profile-label{
+    width: 100%;
+    height: fit-content;
+    font-size:13px;
+}
+
+.profile-label .profile-label-no{
+    height: fit-content;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #1471f5;
+}
+
+.profile-label .profile-label-age{
+    height: fit-content;
+    width: fit-content;
+    margin-left:0.5rem;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #1fa0cf;
+}
+
+.profile-label .profile-label-sex{
+    height: fit-content;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #fcba03;
+}
+
+
+.profile-label .profile-label--first-row{
+    font-weight: bold;
+    color:white;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+
+.profile-label .profile-label--second-row{
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    margin-top:0.5rem;
+}
+
+.upload-image{
+    z-index: 100;
+    position: absolute;
+    top:48%;
+    left:28%;
+}
+.upload-btn{
+    height: fit-content;
+    width: fit-content;
+    background: #1058bd !important;
+    opacity: 0.5;
+    
+}
+
+.upload-btn:hover{
+    background: #1058bd !important;
+    opacity: 1;
+}
+
+.upload-btn svg{
+    color:white;
+    opacity: 0.5;
+    transition: 1s;
+}
+
+.upload-btn svg:hover{
+    opacity: 1;
+}

@@ -1,0 +1,182 @@
+.container{
+    padding: 16px;
+    background: rgb(250, 250, 250);
+}
+
+.user-form-container{
+    position: relative;
+    width: 60%;
+    height: 100%;
+    margin: auto;
+    /* border: 1px solid red; */
+}
+
+.user-form-container .login-form--usericon{
+    color:#1976d2;
+    transition: 0.4s;
+    
+}
+
+.user-form-container .login-form--lockicon{
+    color:#1976d2;
+    transition: 0.4s;
+    cursor: pointer;
+}
+.user-form-container .login-form--lockicon-unblur{
+    cursor: pointer;
+}
+
+
+.login-form{
+    position: relative;
+    width:65%;
+    height: 100%;
+    /* border: 1px solid purple; */
+    margin:auto;
+}
+
+.btn__login{
+    font-size: 16px !important;
+    width: 100%;
+    height: 3rem;
+    background-color:#265ac1 !important;
+    color: white !important;
+    text-transform: none !important;
+}
+
+.btn__login:hover{
+    background-color:#4074db !important;
+}
+
+.text__recoverypassword{
+    font-size: 13px;
+    font-weight: bold;
+    float: right;
+    color:#265ac1;
+}
+.text__signup{
+    font-size: 13px;
+    font-weight: bold;
+    float: left;
+    color:#265ac1;
+}
+.text__recoverypassword:hover{
+    color:#4f84ec;
+    cursor: pointer
+}
+
+.login-form__title{
+    text-align: center;
+    font-size: 28px;
+    font-family: "Roboto",sans-serif
+}
+
+/* User Page */
+.row-space{
+    height: 20px;
+}
+.col-space{
+    width: 10px;
+}
+.user__title{
+    font-size: 32px;
+}
+.form-layout{
+}
+
+.form-layout{
+    display: flex;
+}
+.form__title{
+    width: 30%;
+    font-size: 16px;
+}
+.form__title div{
+    font-size: 13px;
+}
+.form__input{
+    width: 70%;
+    height: 100%;
+    padding: 8px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 5px;
+}
+
+.form__input:focus{
+    outline: none;
+}
+
+.user-container{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* button style */
+.btn-group{
+    display: flex;
+}
+
+.button{
+    position: relative;
+    border-radius: 5px;
+    font-size: 16px;
+    width: fit-content;
+    padding: 10px 16px;
+    height: fit-content;
+    z-index: 1;
+    outline: none;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+.button::after{
+    content: "";
+    position: absolute;
+    top:100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+    -webkit-transition: top 0.09s ease-in;
+    z-index: -1;
+    transition: 0.4s;
+}
+
+.button:hover::after{
+    top:0;
+}
+
+/* primary btn */
+.button.button--primary{
+    background: white;
+    color: black
+} 
+.button.button.button--primary:hover{
+    color:whitesmoke;
+}
+.button.button--primary::after{
+    background-color: rgb(218, 63, 63);
+}
+
+/* secondary btn*/
+.button.button--secondary{
+    background: black;
+    color:white;
+}
+
+.button.button.button--secondary:hover{
+    color:white;
+    
+}
+.button.button--secondary::after{
+    background-color: green;
+}

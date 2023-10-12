@@ -1,0 +1,375 @@
+
+.employee-title Button{
+    height: 70%;
+    margin: auto;
+    text-transform: none;
+}
+
+.employee-title p{
+    margin: auto;
+    color: blue;
+    padding: 0 8px;
+}
+.employee-title span{
+    font-size:22px;
+    padding: 8px 0px;
+}
+.employee-title{
+    background-color: rgb(245, 245, 245);
+    display: flex;
+   border: 1px solid rgb(230, 230, 230);
+   border-radius: 5px;
+   padding: 8px 8px;
+   position: relative;
+}
+/* ----------------------------------------- */
+/* status bar */
+.user-navigate{
+    align-items: center;
+    background-color: #000000;
+    display: flex;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 5px 5px 0 0px;
+    padding: 0px 16px;
+    position: relative;
+    justify-content: space-between;
+}
+
+/* Style The Dropdown Button */
+.dropbtn {
+    color: white;
+    font-size: 16px;
+    border: 3px solid rgb(221, 221, 221);
+    cursor: pointer;
+    border-radius: 50px;
+    height: 30x;
+    width: 30px;
+    position: relative;
+  }
+  .username{
+      margin-right: 16px;
+      color: white;
+      border-radius: 3px;
+      padding: 8px;
+      background-color: rgb(50, 55, 110)
+  }
+  .content-custom{
+      border-bottom: 1px solid gray;
+      padding: 0px 16px;
+  }
+  .content-custom p{
+    padding: 0px;
+}
+
+
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    border-radius:5px;
+    overflow: hidden;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    right: 5px;
+    height: 0px;
+    width: 0px;
+    transition: height 1s, width 1s,transform 3s;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content .dropdown-item{
+    justify-content: space-between;
+    display:flex;
+    align-items:center;
+  }
+  .dropdown-content .dropdown-item .icons{
+      margin-right: 16px;
+  }
+
+  .dropdown-content .dropdown-item:hover{
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+
+
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+      height: 200px;
+      width: 400px;
+  }
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
+
+/* ---------------------------------- */
+
+.employeeBtn{
+    margin-top: auto;
+    margin-bottom:auto;
+    margin-right:0.5rem;
+}
+
+.employeeBtn--active{
+    font-size: 15px;
+    padding: 10px 12px;
+    border-radius: 5px;
+    background-color: #007bff;
+    border: none;
+    color:white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.employeeBtn--active:hover{
+    background-color: #6191f1;
+}
+
+.employeeBtn--active:focus{
+    outline:none;
+}
+
+.employeeBtn--inactive{
+    font-size: 16px;
+    padding: 10px 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(245, 245, 245);
+    color: #3876f2;
+    transition: 0.3s;
+    cursor: pointer
+}
+.employeeBtn--inactive:hover{
+    background-color: rgb(218, 218, 218);
+}
+
+/* ------------------------------ */
+
+.teamBtn{
+    margin-top: auto;
+    margin-bottom:auto;
+    margin-right:0.5rem;
+}
+
+.teamBtn--active{
+    font-size: 15px;
+    padding: 10px 12px;
+    border-radius: 5px;
+    background-color: #007bff;
+    border: none;
+    color:white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.teamBtn--active:focus{
+   outline:none;
+}
+
+.teamBtn--inactive{
+    font-size: 16px;
+    padding: 10px 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(245, 245, 245);
+    color:  #3876f2;
+    transition: 0.3s;
+    cursor: pointer
+}
+.teamBtn--inactive:hover{
+    background-color: rgb(218, 218, 218);
+}
+
+
+/* icon button */
+.MuiIconButton-root:disabled {
+    color: black;
+    opacity: 0.2;
+  }
+.MuiIconButton-root {
+    color: black !important;
+  }
+
+/* Language Selector */
+.language-selector{
+    margin-top: auto;
+    margin-bottom:auto;
+    height: 37px;
+    width: 9rem;
+    background-color: white ;
+}
+
+.icon-img{
+    position: relative;
+    height: 24px;
+    width: 24px;
+}
+
+.icon-adjust{
+    margin-top: 5px;
+    margin-left:10px;
+}
+
+.datagrid-icon:hover + .icon-text{
+    border-radius: 5px;
+    width: fit-content;
+    height: 24px;
+    background-color: rgb(247, 247, 137);
+    font-size: 13px;
+    position: absolute;
+    display: block;
+    color: black;
+    margin-top:32px;
+    margin-right: 30px;
+    
+}
+
+.icon-text{
+    display: none;
+}
+
+/* Loading screen */
+.loading-container{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background: rgba(119, 119, 119, 0.1) ; */
+    
+    animation: animatedBg 10s linear infinite;
+}
+@keyframes animatedBg{
+    0%
+    {
+        filter: hue-rotate(0deg);
+    }
+    100%
+    {
+        filter: hue-rotate(360deg)
+    }
+}
+section .loader{
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+section .loader span{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(calc(18deg * var(--i)))
+}
+
+section .loader span::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00ff0a;
+    box-shadow: 0 0 10px #00ff0a;
+    /* 0 0 20px #00ff0a,
+    0 0 40px #00ff0a,
+    0 0 60px #00ff0a,
+    0 0 80px #00ff0a,
+    0 0 100px #00ff0a; */
+    animation: animate 2s linear infinite;
+    animation-delay: calc(0.1s*var(--i));
+}
+@keyframes animate{
+    0%
+    {
+        transform: scale(1);
+    }
+    80%, 100%
+    {
+        transform: scale(0);
+    }
+}
+
+/* SideBar */
+.sidebar-container{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+}
+.sidebar{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+.sidebar-item-holder{
+    margin: auto 8px;
+    display: flex;
+    width: 100%;
+}
+.sidebar-item{
+    
+    width: 100%;
+    height: 2rem;
+    position: relative;
+    display: flex;
+    padding: 8px;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    transition: 0.4s;
+    z-index: 1;
+}
+
+.sidebar-item::after{
+    content: "";
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    border-radius: 5px;
+    -webkit-transition: top 0.09s ease-in;
+    z-index: -1;
+    background: black;
+    transition: 0.4s;
+}
+
+.sidebar-item:hover::after{
+    right: 0%;
+}
+
+.sidebar-item:hover{
+    color: whitesmoke;
+    cursor: pointer;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+.sidebar-title{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin-left: 8px;
+}

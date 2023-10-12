@@ -1,0 +1,80 @@
+.statistic--container{
+    position: relative;
+    display: flex;
+    padding: 0;
+    width: 50%;
+    flex-wrap: wrap;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 20px;
+}
+
+
+.statistic--container .statistic--panel{
+    position: relative;
+    width: calc(50% - 1.6rem);
+    height: fit-content;
+    padding:8px 0px 24px 0px;
+    border: 1px solid rgb(219, 219, 219);
+    box-shadow: 0 0 3px 3px #e8e8e8;
+    border-radius: 20px;
+    margin:1rem 0rem 1rem 1rem;
+   
+}
+
+.statistic--container .statistic--panel .statistic--body{
+    text-align: center;
+    width: fit-content;
+    margin-left:auto;
+    margin-right: auto;
+    
+}
+
+.statistic--container .statistic--panel .statistic--body .statistic--value{
+    margin-top: 10px;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.statistic--container .statistic--panel .statistic--body .statistic--title{
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* --------------------- */
+.summary{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: white;
+    height: 50px;
+    width: 100%;
+    background-color: #4e54ed;
+    text-align: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px 20px 0px 0px;
+}
+.summary h3{
+    margin:0;
+    padding-top:12px;
+}
+
+.summary--container{
+    position: relative;
+    padding: 0;
+    width: 45%;
+    border: 1px solid black;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 20px;
+    
+}
+.summary-content{
+    color: #777777;
+    padding: 8px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.summary-content p{
+    color: black;
+    font-weight: bold;
+}

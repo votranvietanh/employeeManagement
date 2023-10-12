@@ -1,0 +1,84 @@
+.container{
+    padding: 16px;
+    background: rgb(250, 250, 250);
+}
+
+.information-card{
+    padding: 8px;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    height: 6em;
+    background: white;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.content span{
+    font-weight: bold;
+}
+.left-content{
+    display: flex;
+    position: relative;
+    width: 30%;
+ 
+}
+
+.right-content{
+    display: flex;
+    position: relative;
+    width: 70%;
+}
+
+.right-content .content{
+    margin: auto 0 auto 16px;
+}
+
+.left-content .content{
+    margin: auto
+}
+
+.left-content .content .title-icon-holder{
+    color: green;
+    display: flex;
+    /* border: 1px solid red; */
+    border-radius: 50px;
+    width: 48px;
+    height: 48px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.button-group Button{
+    font-size: 15px;
+    padding: 10px 12px;
+    border-radius: 5px;
+    background-color: #32376E;
+    border: none;
+    color:white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.button-group Button:hover{
+    background-color: #3c40ad;
+}
+
+.helper-text{
+    font-size: 13px;
+    opacity: 0.5;
+    padding: 8px;
+}
+
+.helper-text-allow{
+    font-size: 13px;
+    color:green;
+    opacity: 1;
+    padding: 8px;
+}
+
+.data-grid-container{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 0px 8px 8px 8px;
+    background: white;
+    border-radius: 5px;
+}

@@ -1,0 +1,347 @@
+import React, { useState, useEffect } from 'react';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import IconButton from '@mui/material/IconButton';
+import { FaEdit } from "react-icons/fa";
+import { Box, Grid, TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material'
+
+import dayjs from 'dayjs'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
+
+import { useGetPosition } from '../../api/Position/usePosition';
+import { useGetTeam } from '../../api/Team/useTeam';
+import { useUpdateEmployee } from '../../api/Employee/useEmployee';
+
+import './detail.css';
+
+const DetailEdit = (props) => {
+
+
+
+    const dialogTitleStyle = {
+        backgroundColor: '#4e54ed',
+        color: 'white'
+    }
+    const selectLabelStyle = {
+        left: "-15px",
+    }
+
+    //-------------------------------------------------
+
+    //Using useUpdateEmployee
+    const updateEmployee = useUpdateEmployee();
+    const onUpdateEmployee = async (employee, positionID, teamID) => {
+        await updateEmployee.mutateAsync({ employee, positionID, teamID })
+    }
+
+
+    //Đổi startDate từ string sang DateObject cho DatePicker
+    let convertedDate = dayjs(props.data.startDate, 'DD-MM-YYYY');
+
+    //Fetch data
+    const { data: positionData } = useGetPosition();
+    const { data: teamData } = useGetTeam();
+
+    const [error, setError] = useState('');
+    const [fullName, setFullName] = useState(props.data.fullName)
+    const [address, setAddress] = useState(props.data.address)
+    const [age, setAge] = useState(props.data.age)
+    const [moneyPerHour, setMoneyPerHour] = useState(props.data.moneyPerHour)
+    const [phone, setPhone] = useState(props.data.phone)
+    const [sex, setSex] = useState(props.data.sex)
+    const [workdate] = useState(props.data.workdate);
+    const [advance] = useState(props.data.advance);
+    const [team, setTeam] = useState(props.data.teamID);
+    const [position, setPosition] = useState(props.data.positionID);
+
+    const [employeeID] = useState(props.data.employeeID);
+
+    //Lấy date kiểu DateObject cho DatePicker
+    const [date, setDate] = useState(convertedDate);
+
+    //Lấy date kiểu String
+    const [startDate, setStartDate] = useState("")
+
+
+    //---------------------------------------------------
+
+
+    useEffect(() => {
+        //Format date value -> DD-MM-YYYY
+        const formattedDate = dayjs(date).format('DD-MM-YYYY');
+        setStartDate(formattedDate);
+    }, [date, startDate])
+
+    //Getting employee Input
+    const onSexChange = (e) => {
+        setSex(e.target.value);
+    }
+    const onFullNameChange = (e) => {
+        //uppercase chữ đầu tiên sau mỗi khoảng cách
+        //các chữ còn lại đều lowercase
+        const toCapitalize = str => str.replace(/(^\w|\s\w)(\S*)/g, (_, m1, m2) => m1.toUpperCase() + m2.toLowerCase())
+        setFullName(toCapitalize(e.target.value));
+    }
+    const onAddressChange = (e) => {
+        const regex = /^[a-zA-Z0-9\s/,]+$/;
+        //uppercase chữ đầu tiên sau mỗi khoảng cách
+        //các chữ còn lại được phép uppercase
+        const toCapitalize = str => str.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
+        if (e.target.value === "" || regex.test(e.target.value)) {
+            setAddress(toCapitalize(e.target.value));
+        }
+    }
+    const onAgeChange = (e) => {
+        const regex = /^[0-9\b]+$/;
+        if (e.target.value === "" || regex.test(e.target.value)) {
+            setAge(e.target.value);
+        }
+    }
+    const onMoneyPerHourChange = (e) => {
+        const regex = /^[0-9\b]+$/;
+        if (e.target.value === "" || regex.test(e.target.value)) {
+            setMoneyPerHour(e.target.value);
+        }
+    }
+    const onPhoneChange = (e) => {
+        const regex = /^[0-9\b]+$/;
+        if (e.target.value === "" || regex.test(e.target.value)) {
+            setPhone(e.target.value);
+        }
+    }
+
+    const onTeamChange = (e) => {
+        setTeam(e.target.value);
+    };
+    const onPositionChange = (e) => {
+        setPosition(e.target.value);
+    }
+
+    //-------------------------------------------------
+
+    // Submit employee
+    const onSubmitEmployeeClicked = () => {
+        if (!fullName || !address || !age || !moneyPerHour || !phone || sex === undefined || !position || !team || !startDate) {
+            setError('Please fill in all required fields');
+            return;
+        }
+        if (age > 60 || age < 18) {
+            setError('Age cannot be greater than 60 or smaller than 18');
+            return;
+        }
+        if (phone.length > 12 || phone.length < 8) {
+            setError('Phone number is no longer than 12 and smaller than 8 characters');
+            return;
+        }
+        setError('');
+
+        onUpdateEmployee({
+            employeeID,
+            fullName,
+            address,
+            age,
+            moneyPerHour,
+            phone,
+            sex,
+            workdate,
+            advance,
+            startDate
+        }, position, team);
+        handleClose();
+    }
+
+    //-------------------------------------------------
+
+    // Open/Close Dialog
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    //-------------------------------------------------
+
+
+
+    //MenuItem Team cho Select
+    let teamSelect = null;
+    if (teamData) {
+        teamSelect = teamData.map((team) => (
+            <MenuItem key={team.teamID} value={team.teamID}>
+                {team.teamName}
+            </MenuItem>
+        ));
+    }
+
+    //MenuItem Position cho Select
+    let positionSelect = null;
+    if (positionData) {
+        positionSelect = positionData.map((position) => (
+            <MenuItem key={position.positionID} value={position.positionID}>
+                {position.positionName}
+            </MenuItem>
+        ));
+    }
+    return (
+        <Box>
+            <IconButton onClick={handleClickOpen} style={{ display: props.isUserAllow() ? "none" : "" }}>
+                <FaEdit />
+            </IconButton>
+            <Dialog fullWidth={true} open={open} onClose={handleClose}>
+                <DialogTitle style={dialogTitleStyle}>Update Employee</DialogTitle>
+                <DialogContent style={{
+                    paddingTop: '16px',
+                    paddingBottom: '16px'
+                }}>
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                    <Box sx={{ flexGrow: 1, height: 'fit-content' }}>
+                        <Grid container spacing={3} rowSpacing={5}>
+                            <Grid item xs={12}>
+                                <TextField
+                                    onChange={onFullNameChange}
+                                    value={fullName}
+                                    required
+                                    id="fullName"
+                                    label="Full name employee"
+                                    variant='standard'
+                                    fullWidth={true}
+                                    error={fullName.length < 1}
+                                    helperText="Fill employee name"
+                                />
+                                <span style={{ float: 'right' }}>{fullName.length + '/255'}</span>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <TextField
+                                    onChange={onAddressChange}
+                                    value={address}
+                                    required
+                                    id="address"
+                                    label="Address"
+                                    variant='standard'
+                                    fullWidth={true}
+                                    error={address.length < 1}
+                                    helperText="Fill employee address"
+                                />
+                            </Grid>
+                            <Grid item xs={6}>
+                                <FormControl variant="standard" sx={{ m: 2, minWidth: "95%", marginTop: "0px" }}>
+                                    <InputLabel style={selectLabelStyle}>
+                                        Gender
+                                    </InputLabel>
+                                    <Select
+                                        style={{ left: "-15px", width: "106%" }}
+                                        value={sex}
+                                        onChange={onSexChange}
+                                    >
+                                        <MenuItem value={true}>Male</MenuItem>
+                                        <MenuItem value={false}>Female</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <TextField
+                                    onChange={onAgeChange}
+                                    value={age}
+                                    required
+                                    id="age"
+                                    label="Age"
+                                    variant='standard'
+                                    fullWidth={true}
+                                    error={age > 60 || age < 18 || age.length < 1}
+                                    helperText="Age must be higer than 18 or smaller than 60"
+                                />
+                            </Grid>
+                            <Grid item xs={6}>
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePicker
+                                        label="Start Date"
+                                        value={date}
+                                        onChange={(date) => setDate(date)}
+                                        format="DD-MM-YYYY"
+                                        componentsProps={{
+                                            textField: { variant: 'standard', style: { width: "100%" } },
+                                        }}
+                                    />
+                                </LocalizationProvider>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <TextField
+                                    onChange={onMoneyPerHourChange}
+                                    value={moneyPerHour}
+                                    required
+                                    id="moneyPerHour"
+                                    label="Money/Hour"
+                                    variant='standard'
+                                    fullWidth={true}
+                                    error={moneyPerHour.length < 1}
+
+                                />
+                            </Grid>
+                            <Grid item xs={6}>
+                                <TextField
+                                    onChange={onPhoneChange}
+                                    value={phone}
+                                    required
+                                    id="phone"
+                                    label="Phone Number"
+                                    variant='standard'
+                                    fullWidth={true}
+                                    error={phone.length < 1 || phone.length > 12 || phone.length < 8}
+                                    helperText="Phone number has 8 - 12 characters"
+                                />
+                            </Grid>
+
+                            <Grid item xs={6}>
+                                <FormControl variant="standard" sx={{ m: 2, minWidth: "95%", marginTop: "0px" }}>
+                                    <InputLabel style={selectLabelStyle}>
+                                        Team
+                                    </InputLabel>
+                                    <Select
+                                        style={{ left: "-15px", width: "106%" }}
+                                        value={team}
+                                        onChange={onTeamChange}
+                                    >
+                                        {teamSelect}
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+
+                            <Grid item xs={6}>
+                                <FormControl variant="standard" sx={{ m: 2, minWidth: "95%", marginTop: "0px" }}>
+                                    <InputLabel style={selectLabelStyle}>
+                                        Position
+                                    </InputLabel>
+                                    <Select
+                                        style={{ left: "-15px", width: "106%" }}
+                                        value={position}
+                                        onChange={onPositionChange}
+                                    >
+                                        {positionSelect}
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                        </Grid>
+                    </Box>
+
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>CANCEL</Button>
+                    <Button onClick={onSubmitEmployeeClicked}>SUBMIT</Button>
+                </DialogActions>
+            </Dialog>
+        </Box>
+    );
+};
+
+export default DetailEdit;
